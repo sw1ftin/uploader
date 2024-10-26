@@ -1,13 +1,13 @@
-# Terminal File Sharing
+# Uploader
 
-Terminal File Sharing - это веб-приложение для обмена файлами в стиле терминала, разработанное с использованием Flask и Telegram Bot API.
+Uploader - это веб-приложение для обмена файлами в стиле терминала, разработанное с использованием Flask и Telegram Bot API.
 
 ## Установка
 
 1. Клонируйте репозиторий:
    ```
-   git clone https://github.com/your-username/terminal-file-sharing.git
-   cd terminal-file-sharing
+   git clone https://github.com/sw1ftin/uploader.git
+   cd uploader
    ```
 
 2. Создайте виртуальное окружение и активируйте его:
