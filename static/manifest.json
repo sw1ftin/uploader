@@ -1,0 +1,21 @@
+{
+  "name": "Terminal File Sharing",
+  "short_name": "TFS",
+  "description": "Файлообменник в стиле терминала",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1e1e",
+  "theme_color": "#bb86fc",
+  "icons": [
+    {
+      "src": "/static/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

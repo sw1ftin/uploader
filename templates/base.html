@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e1e1e">
+    <title>Terminal File Sharing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
+            </div>
+            <span class="terminal-title">Terminal File Sharing</span>
+            {% if current_user.is_authenticated %}
+            <div class="user-menu">
+                <span class="username">{{ current_user.username }}</span>
+                <div class="dropdown-content">
+                    <button onclick="location.href='{{ url_for('change_password') }}'" class="btn">Изменить пароль</button>
+                    <button onclick="location.href='{{ url_for('settings') }}'" class="btn">Настройки</button>
+                    <button onclick="location.href='{{ url_for('logout') }}'" class="btn">Выйти</button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="terminal-body">
+            <div class="flash-messages">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">
+                                {{ message }}
+                                <span class="close-btn">&times;</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

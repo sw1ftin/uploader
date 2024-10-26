@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-container">
+    <h1>Регистрация</h1>
+    <form method="POST" class="auth-form">
+        <input type="text" id="username" name="username" placeholder="Имя пользователя" required>
+        <input type="password" id="password" name="password" placeholder="Пароль" required>
+        <button type="submit" class="btn btn-action full-width">Зарегистрироваться</button>
+    </form>
+    <p>Уже есть аккаунт? <button onclick="location.href='{{ url_for('login') }}'" class="btn btn-link">Войти</button></p>
+</div>
+{% endblock %}

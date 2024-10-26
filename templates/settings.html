@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Настройки</h1>
+<form method="POST" class="auth-form">
+    <h2>Изменить имя пользователя</h2>
+    <input type="text" id="username" name="username" value="{{ current_user.username }}" required>
+    <button type="submit" class="btn btn-action">Сохранить изменения</button>
+</form>
+<form method="POST" action="{{ url_for('change_password') }}" class="auth-form">
+    <h2>Изменить пароль</h2>
+    <input type="password" id="old_password" name="old_password" placeholder="Текущий пароль" required>
+    <input type="password" id="new_password" name="new_password" placeholder="Новый пароль" required>
+    <button type="submit" class="btn btn-action">Изменить пароль</button>
+</form>
+<button onclick="location.href='{{ url_for('dashboard') }}'" class="btn btn-action btn-return">Вернуться на панель управления</button>
+{% endblock %}

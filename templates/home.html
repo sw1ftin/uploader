@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-container">
+    <h1>Terminal File Sharing</h1>
+    <form method="POST" action="{{ url_for('login') }}" class="auth-form">
+        <input type="text" name="username" placeholder="Имя пользователя" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit" class="btn btn-action full-width">Войти</button>
+    </form>
+    <p>Нет аккаунта? <button onclick="location.href='{{ url_for('register') }}'" class="btn btn-link">Зарегистрироваться</button></p>
+</div>
+{% endblock %}

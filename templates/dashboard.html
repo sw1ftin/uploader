@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Панель управления</h1>
+
+<h2>Загрузить файл</h2>
+<form id="uploadForm" method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" class="file-upload-form">
+    <div class="file-upload-area" id="dropZone">
+        <p>Перетащите файл сюда или кликните для выбора</p>
+        <input type="file" name="file" id="fileInput" class="file-upload-input" required>
+    </div>
+</form>
+<div id="progressBar" class="progress-bar" style="display: none;">
+    <div class="progress"></div>
+</div>
+
+<h2>Ваши файлы</h2>
+<div class="view-toggle">
+    <button id="listView" class="active">Список</button>
+    <button id="gridView">Таблица</button>
+</div>
+<div id="fileContainer" class="file-list">
+    {% for file in files %}
+    <div class="file-item" draggable="true">
+        <span class="file-name">{{ file.original_filename }}</span>
+        <div class="file-actions">
+            <button onclick="location.href='{{ url_for('download_file', unique_link=file.unique_link) }}'" class="btn btn-action btn-small">Скачать</button>
+            <button class="btn btn-action btn-small copy-link" data-link="{{ request.url_root }}{{ file.unique_link }}">Копировать</button>
+            <form method="POST" action="{{ url_for('delete_file', file_id=file.id) }}" class="delete-form">
+                <button type="submit" class="btn btn-action btn-small btn-delete">Удалить</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
